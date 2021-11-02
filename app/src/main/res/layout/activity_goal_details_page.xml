@@ -8,7 +8,7 @@
     tools:context=".GoalDetailsPage">
 
     <TextView
-        android:id="@+id/goalTitle"
+        android:id="@+id/tvGoalDetailsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/goalDescription"
+        android:id="@+id/tvGoalDetailsDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -30,25 +30,25 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvGoalDetailsTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/goalStepRecyclerView"
+        android:id="@+id/rvGoalDetailsTasks"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/llGoalDetailsAddTask"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalDescription">
+        app:layout_constraintTop_toBottomOf="@+id/tvGoalDetailsDescription">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/llGoalDetailsAddTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/goalStep_et"
+            android:id="@+id/etGoalDetailsAddTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -68,11 +68,12 @@
             android:inputType="textPersonName" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/goalStep_add"
+            android:id="@+id/buttonGoalDetailsAddTask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:clickable="true"
+            android:onClick="addNewTask"
             app:srcCompat="@drawable/add" />
     </LinearLayout>
 
