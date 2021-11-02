@@ -4,10 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_goal_details_page.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_goal_page.xml" value="0.19635416666666666" />
+        <entry key="app/src/main/res/layout/activity_goal_page.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_timer_page.xml" value="0.18229166666666666" />
+        <entry key="app/src/main/res/layout/activity_timer_page.xml" value="0.33" />
         <entry key="app/src/main/res/layout/goal_step_item.xml" value="0.353125" />
+        <entry key="app/src/main/res/layout/goals_item.xml" value="0.353125" />
       </map>
     </option>
   </component>
