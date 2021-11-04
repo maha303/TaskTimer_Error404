@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GoalDetailsPage">
+    tools:context=".GoalDetailsPage"
+    android:background="#27F6DFB9">
 
     <TextView
         android:id="@+id/tvGoalDetailsTitle"
@@ -13,7 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Goal"
-        android:textSize="30dp"
+        android:textSize="35dp"
+        android:textColor="#373737"
+        android:fontFamily="@font/londrinashadow_regular"
+        android:textStyle="bold"
+        android:letterSpacing="0.06"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,12 +27,13 @@
         android:id="@+id/tvGoalDetailsDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="16dp"
         android:text="Description Description Description Goal Description Description Description"
-        android:textSize="20dp"
         android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGoalDetailsTitle" />
@@ -60,12 +66,15 @@
         <EditText
             android:id="@+id/etGoalDetailsAddTask"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="10dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Enter Step"
-            android:inputType="textPersonName" />
+            android:hint="Enter the goal step"
+            android:inputType="textPersonName"
+            android:background="@drawable/edit_text_style"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/buttonGoalDetailsAddTask"
@@ -74,7 +83,11 @@
             android:layout_marginEnd="8dp"
             android:clickable="true"
             android:onClick="addNewTask"
-            app:srcCompat="@drawable/add" />
+            android:scaleType="center"
+            app:fabCustomSize="55dp"
+            app:maxImageSize="35dp"
+            app:srcCompat="@drawable/add"
+            app:tint="@color/white" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

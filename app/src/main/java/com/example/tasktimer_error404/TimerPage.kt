@@ -46,16 +46,19 @@ class TimerPage : AppCompatActivity() {
     private fun startTimer() {
         serviceIntent.putExtra(TimerService.TIME_EXTRA,time)
         startService(serviceIntent)
-        binding.StartStopButton.text="Stop"
-        binding.StartStopButton.icon=getDrawable(R.drawable.pause_icon)
+//        binding.StartStopButton.text="Stop"
+//        binding.StartStopButton.icon=getDrawable(R.drawable.pause)
+        binding.StartStopButton.setImageResource(R.drawable.pause)
+
         timerStarted=true
     }
 
     private fun stopTimer() {
 
         stopService(serviceIntent)
-        binding.StartStopButton.text="Start"
-        binding.StartStopButton.icon=getDrawable(R.drawable.play_icon)
+//        binding.StartStopButton.text="Start"
+//        binding.StartStopButton.icon=getDrawable(R.drawable.play_icon)
+        binding.StartStopButton.setImageResource(R.drawable.play)
         timerStarted=false
     }
 

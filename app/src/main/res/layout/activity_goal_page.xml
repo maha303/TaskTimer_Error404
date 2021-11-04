@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GoalPage">
+    tools:context=".GoalPage"
+    android:background="#27F6DFB9">
 
     <TextView
         android:id="@+id/title"
@@ -12,7 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Goal app"
-        android:textSize="30dp"
+        android:textSize="50dp"
+        android:textColor="#373737"
+        android:fontFamily="@font/londrinashadow_regular"
+        android:textStyle="bold"
+        android:letterSpacing="0.06"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +31,11 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/add" />
+        android:scaleType="center"
+        app:fabCustomSize="60dp"
+        app:maxImageSize="40dp"
+        app:srcCompat="@drawable/add"
+        app:tint="@color/white"/>
 
     <GridView
         android:id="@+id/gridView"
@@ -39,4 +48,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         android:numColumns="2"></GridView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
