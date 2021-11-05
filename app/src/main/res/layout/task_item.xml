@@ -14,15 +14,14 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="#80DBB579"
-    >
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_margin="5dp">
 
 <!--            <CheckBox-->
 <!--                android:id="@+id/cbTaskItem"-->
@@ -34,8 +33,11 @@
                 android:id="@+id/cbTaskItem"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:scaleX="1.30"
+                android:scaleY="1.30"
                 style="@style/CustomCheckbox02"
                 android:layout_margin="8dp"
+
                 />
             <TextView
                 android:id="@+id/tvTaskItemTitle"
@@ -43,7 +45,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Goal"
-                android:textColor="@color/black"
+
+                android:fontFamily="sans-serif"
+                android:textSize="18dp"
+                android:textColor="#373737"
                 />
 
             <ImageView

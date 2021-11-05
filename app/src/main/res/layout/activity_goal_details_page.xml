@@ -6,17 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GoalDetailsPage"
-    android:background="#27F6DFB9">
+    android:background="#DA997F">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lf30_editor_cjzmcltv" />
 
     <TextView
         android:id="@+id/tvGoalDetailsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:text="Goal"
         android:textSize="35dp"
-        android:textColor="#373737"
-        android:fontFamily="@font/londrinashadow_regular"
+        android:textColor="#DA997F"
+        android:fontFamily="@font/lobster_regular"
         android:textStyle="bold"
         android:letterSpacing="0.06"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,22 +39,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:text="Description Description Description Goal Description Description Description"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="#373737"
+        android:visibility="visible"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGoalDetailsTitle" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvGoalDetailsTasks"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/llGoalDetailsAddTask"
@@ -57,8 +70,9 @@
         android:id="@+id/llGoalDetailsAddTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -66,15 +80,17 @@
         <EditText
             android:id="@+id/etGoalDetailsAddTask"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:paddingStart="10dp"
             android:layout_weight="1"
+            android:background="@drawable/edit_text_style"
             android:ems="10"
+            android:textColorHint="#EFE3DE"
+            android:textSize="16dp"
             android:hint="Enter Tasks"
             android:inputType="textPersonName"
-            android:background="@drawable/edit_text_style"/>
+            android:paddingStart="10dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/buttonGoalDetailsAddTask"
@@ -87,7 +103,7 @@
             app:fabCustomSize="55dp"
             app:maxImageSize="35dp"
             app:srcCompat="@drawable/add"
-            app:tint="@color/white" />
+            app:tint="#DA997F" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

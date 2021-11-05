@@ -8,8 +8,32 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".timer.TimerPage"
-    android:background="#27F6DFB9">
+    android:background="#DA997F">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lf30_editor_cjzmcltv" />
 
+    <TextView
+        android:id="@+id/tvGoalDetailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Goal title"
+        android:textSize="35dp"
+        android:textColor="#DA997F"
+        android:fontFamily="@font/lobster_regular"
+        android:textStyle="bold"
+        android:letterSpacing="0.06"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +55,7 @@
             android:letterSpacing="0.05"
             android:fontFamily="@font/londrinashadow_regular"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="60sp" />
 
         <LinearLayout

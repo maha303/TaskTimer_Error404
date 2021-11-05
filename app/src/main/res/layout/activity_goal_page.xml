@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GoalPage"
-    android:background="#27F6DFB9">
+    android:background="#DA997F">
 
     <TextView
         android:id="@+id/title"
@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Goal app"
-        android:textSize="50dp"
-        android:textColor="#373737"
-        android:fontFamily="@font/londrinashadow_regular"
+        android:textSize="40dp"
+        android:textColor="#fff"
+        android:fontFamily="@font/lobster_regular"
         android:textStyle="bold"
         android:letterSpacing="0.06"
         app:layout_constraintEnd_toEndOf="parent"
