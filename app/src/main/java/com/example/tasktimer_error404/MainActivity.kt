@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun startMainActivity() {
         mRunnable = Runnable {
-            startActivity(Intent(this, TimerPage::class.java))
+            startActivity(Intent(this, GoalPage::class.java))
             finish()
         }
 

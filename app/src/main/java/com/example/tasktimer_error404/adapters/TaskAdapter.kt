@@ -8,12 +8,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tasktimer_error404.GoalDetailsPage
+import com.example.tasktimer_error404.MainActivity
 import com.example.tasktimer_error404.database.Task
 import com.example.tasktimer_error404.databinding.TaskItemBinding
 import com.example.tasktimer_error404.timer.TimerPage
 
 class TaskAdapter (val context: Context): RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     var messages = emptyList<Task>()
+    var selecteTaskID: Int? = null
 
     class ViewHolder(val binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -48,6 +51,8 @@ class TaskAdapter (val context: Context): RecyclerView.Adapter<TaskAdapter.ViewH
                     ivTaskItem.isClickable = true
                 }
             }
+            cvTaskItem.setOnClickListener { selecteTaskID = message.t_id }
+
         }
     }
 
@@ -56,5 +61,10 @@ class TaskAdapter (val context: Context): RecyclerView.Adapter<TaskAdapter.ViewH
     fun update(newMessages: List<Task>) {
         this.messages = newMessages
         notifyDataSetChanged()
+    }
+
+    fun getTaskID(position: Int): Int {
+        var message = messages[position]
+        return message.t_id
     }
 }
