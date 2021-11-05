@@ -2,6 +2,7 @@ package com.example.tasktimer_error404.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "GoalsTable")
 data class Goal(
