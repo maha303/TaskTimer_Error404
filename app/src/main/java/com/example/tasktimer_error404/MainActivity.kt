@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.tasktimer_error404.timer.TimerPage
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mHandler: Handler
@@ -13,20 +12,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         startMainActivity()
-//        val l = findViewById<ConstraintLayout>(R.id.llcon)
-//        l.setOnClickListener {
-//            val intt = Intent(this,TimerPage::class.java)
-//            startActivity(intt)
-//        }
     }
     private fun startMainActivity() {
         mRunnable = Runnable {
-            startActivity(Intent(this, GoalPage::class.java))
+            startActivity(Intent(this,GoalPage::class.java))
             finish()
         }
 
         mHandler = Handler()
 
-        mHandler.postDelayed(mRunnable, 4000)
+        mHandler.postDelayed(mRunnable, 6000)
     }
 }
