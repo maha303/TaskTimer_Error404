@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TaskTimer_Error404">
         <activity
-            android:name=".TimerPage"
+            android:name=".timer.TimerPage"
             android:exported="true" />
         <activity
             android:name=".GoalDetailsPage"
@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".TimerService"/>
+        <service android:name=".timer.TimerService"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.tasktimer_error404
+package com.example.tasktimer_error404.adapters
 
 import android.graphics.Paint
 import android.view.LayoutInflater

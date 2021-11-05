@@ -1,4 +1,4 @@
-package com.example.tasktimer_error404
+package com.example.tasktimer_error404.timer
 
 import android.app.Service
 import android.content.Intent
