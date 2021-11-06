@@ -41,7 +41,7 @@ class TimerPage : AppCompatActivity() {
         binding.completedButton.setOnClickListener {
             task_state = "true"
             updateTimer()
-            val intent = Intent(this, CongratPage::class.java)
+            val intent = Intent(this, CongratsPage::class.java)
             startActivity(intent)
         }
         binding.timerHome.setOnClickListener {
