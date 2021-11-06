@@ -7,5 +7,6 @@ class CongratPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_congrat_page)
+
     }
 }
