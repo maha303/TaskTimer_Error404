@@ -1,21 +1,22 @@
 package com.example.tasktimer_error404
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.LiveData
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.RIGHT
+import androidx.recyclerview.widget.ItemTouchHelper.LEFT
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimer_error404.adapters.TaskAdapter
 import com.example.tasktimer_error404.database.Goal
 import com.example.tasktimer_error404.databinding.ActivityGoalDetailsPageBinding
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchHelper.LEFT
-
-import androidx.recyclerview.widget.RecyclerView
-import com.example.tasktimer_error404.database.Task
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 
 class GoalDetailsPage : AppCompatActivity() {
@@ -45,17 +46,25 @@ class GoalDetailsPage : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    val callback: ItemTouchHelper.SimpleCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT or LEFT) {
+    val callback: ItemTouchHelper.SimpleCallback = object : ItemTouchHelper.SimpleCallback(0, RIGHT or LEFT) {
         override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
             return false
         }
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             when{
-                ItemTouchHelper.LEFT == direction -> taskViewModel.deleteTask(adapterTask.getTaskID(viewHolder.adapterPosition))
-                ItemTouchHelper.RIGHT == direction -> 1//todo add edit function
+                LEFT == direction -> taskViewModel.deleteTask(adapterTask.getTaskID(viewHolder.adapterPosition))
+                RIGHT == direction -> 1//todo add edit function
             }
             //todo add swipe ui
             //todo add undo on delete
+        }
+        override fun onChildDraw (c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean){
+            RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                .addSwipeRightBackgroundColor(Color.GREEN).addSwipeLeftBackgroundColor(Color.RED) //todo change colors to prettier colors
+                .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24).addSwipeLeftActionIcon(R.drawable.delete_icon)
+                .setActionIconTint(Color.WHITE)
+                .create().decorate()
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         }
     }
     private lateinit var adapterTask: TaskAdapter
@@ -91,8 +100,19 @@ class GoalDetailsPage : AppCompatActivity() {
 
 }
 
-//todo app name, logo
-//todo description ui
+//todo app name
 //todo add task prompt
 //todo change state and time
 //todo add update
+//todo add swipe decorator
+
+//todo description ui
+//todo task item ui -> timer icon
+
+/*
+Tapping another task while a timer is active, should pause the active timer and start the timer of the tapped task
+A new fragment/activity should display all tasks and the amount of time spent on each task
+Make sure to keep track of the total time spent on each task and a total for all tasks
+Spend some time making sure that users understand how to use your app (include instructions)
+
+ */
