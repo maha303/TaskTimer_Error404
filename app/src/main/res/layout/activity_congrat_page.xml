@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CongratPage"
+    tools:context=".CongratsPage"
     android:background="#DA997F">
 
     <LinearLayout
@@ -18,13 +18,14 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/tvCongrats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/lobster_regular"
-            android:text="Congratulations to complete your task successfully"
+            android:text=""
             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="30dp"
@@ -48,6 +49,7 @@
             android:backgroundTint="#ffffff"
             android:textColor="#DA997F"
             android:textSize="20dp"
+            android:onClick="backButton"
             android:textStyle="bold"
           />
 

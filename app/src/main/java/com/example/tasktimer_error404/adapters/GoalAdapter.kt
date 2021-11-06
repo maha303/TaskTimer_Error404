@@ -1,6 +1,7 @@
 package com.example.tasktimer_error404.adapters
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Paint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -30,8 +31,14 @@ class GoalAdapter(val activity: GoalPage):
         holder.binding.apply {
             tvGoalItemTitle.text = goal.g_title //name of the entity column
             tvtotalTime.text = goal.g_time
-            Log.d("TAG RV", "tv text is: ${tvGoalItemTitle.text}")
-
+            if(goal.g_state == true.toString()) { //complete
+                tvGoalItemTitle.paintFlags = tvGoalItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                tvGoalItemTitle.setTextColor(Color.GRAY)
+            }
+            else {
+                tvGoalItemTitle.paintFlags = 0
+                tvGoalItemTitle.setTextColor(Color.BLACK)
+            }
             ivGoalItem.setOnClickListener{
                 val intent = Intent(activity, GoalDetailsPage::class.java)
                 intent.putExtra("id", goal.g_id)
@@ -42,8 +49,6 @@ class GoalAdapter(val activity: GoalPage):
                 intent.putExtra("time", goal.g_time)
                 activity.startActivity(intent)
             }
-
-            //todo update and delete in goal details activity + home button
         }
     }
 
