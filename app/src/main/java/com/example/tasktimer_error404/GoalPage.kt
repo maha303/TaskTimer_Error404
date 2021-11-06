@@ -36,8 +36,6 @@ class GoalPage : AppCompatActivity() {
         initializeRecycler()
         initializeViewModel()
 
-        //todo hi zahrah :)
-        //todo I am using this to get the goal, edit it as you see fit
         var selectedGoal = Goal(1,"Work Out Goal","make it optional", "", "true", "")
 
         goal_add = findViewById(R.id.goal_add)
@@ -126,5 +124,4 @@ class GoalPage : AppCompatActivity() {
         alert.setView(newLayout)
         alert.show()
     }
-
 }

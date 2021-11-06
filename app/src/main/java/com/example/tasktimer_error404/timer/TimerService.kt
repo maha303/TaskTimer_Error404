@@ -13,16 +13,14 @@ class TimerService :Service() {
         val time = intent.getDoubleExtra(TIME_EXTRA,0.0)
         timer.scheduleAtFixedRate(TimeTask(time),0,1000)
         return START_NOT_STICKY
-
     }
-
     override fun onDestroy() {
         timer.cancel()
         super.onDestroy()
     }
     private inner class TimeTask(private var time :Double):TimerTask(){
         override fun run() {
-            val intent=Intent(TIME_UPDATED)
+            val intent = Intent(TIME_UPDATED)
             time++
             intent.putExtra(TIME_EXTRA,time)
             sendBroadcast(intent)

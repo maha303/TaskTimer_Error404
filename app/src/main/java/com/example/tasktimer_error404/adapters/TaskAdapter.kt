@@ -49,7 +49,12 @@ class TaskAdapter (val context: Context, val activity: GoalDetailsPage): Recycle
             }
             ivTaskItem.setOnClickListener {
                 val intent = Intent(context, TimerPage::class.java)
-                intent.putExtra("task", message.t_title)
+                intent.putExtra("task_id", message.t_id)
+                intent.putExtra("task_title", message.t_title)
+                intent.putExtra("task_state", message.t_state)
+                intent.putExtra("task_time", message.t_time)
+                intent.putExtra("goal_id", message.goal_id)
+
                 context.startActivity(intent)
             }
             cbTaskItem.setOnClickListener {
@@ -65,8 +70,6 @@ class TaskAdapter (val context: Context, val activity: GoalDetailsPage): Recycle
     }
 
     override fun getItemCount() = messages.size
-
-
 
     fun update(newMessages: List<Task>) {
         this.messages = newMessages

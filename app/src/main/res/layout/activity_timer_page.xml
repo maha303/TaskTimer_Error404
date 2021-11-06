@@ -9,6 +9,7 @@
     android:gravity="center"
     tools:context=".timer.TimerPage"
     android:background="#DA997F">
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
         android:layout_width="match_parent"
@@ -58,7 +59,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/time_tv"
+            android:id="@+id/timeTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -87,6 +88,7 @@
                 app:maxImageSize="60dp"
                 app:srcCompat="@drawable/play"
                 app:tint="@color/white" />
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/resetButton"
                 android:layout_width="wrap_content"
@@ -98,6 +100,7 @@
                 app:maxImageSize="52dp"
                 app:srcCompat="@drawable/reset"
                 app:tint="@color/white" />
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/completedButton"
                 android:layout_width="wrap_content"
@@ -111,8 +114,5 @@
                 app:tint="@color/white" />
 
         </LinearLayout>
-
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

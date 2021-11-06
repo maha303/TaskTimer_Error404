@@ -153,11 +153,6 @@ class GoalDetailsPage : AppCompatActivity() {
 //todo complete goal + move to congrats
 //todo congrats
 
-
-
-
-
-
 //todo app name
 //todo timer
     //state from timer page
