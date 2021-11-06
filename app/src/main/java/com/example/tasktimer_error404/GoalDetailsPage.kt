@@ -32,7 +32,7 @@ class GoalDetailsPage : AppCompatActivity() {
         initializeRecycler()
         getGoalDetails()
         initializeViewModel()
-//        llnoTask
+        //todo llnoTask
     }
 
     private lateinit var taskViewModel: MainViewModel
