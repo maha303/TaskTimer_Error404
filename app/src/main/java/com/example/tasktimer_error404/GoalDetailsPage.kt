@@ -165,7 +165,6 @@ class GoalDetailsPage : AppCompatActivity() {
 //todo app name
 
 //Lubabah
-//todo make goal title mandatory and description optional
 //todo instructions
 
 //Lina

@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,17 +36,21 @@ class AddGoal : AppCompatActivity() {
             val title = etTitle.text.toString()
             val description = etDescription.text.toString()
 
-            initializeViewModel()
-            goalViewModel.addGoal(title,description,STATUS,TIME)
+            if(title.isEmpty()){
+                Toast.makeText(this, "Please enter goal title.",Toast.LENGTH_LONG).show()
+            } else {
+                initializeViewModel()
+                goalViewModel.addGoal(title,description,STATUS,TIME)
 
-            etTitle.text.clear()
-            etTitle.clearFocus()
+                etTitle.text.clear()
+                etTitle.clearFocus()
 
-            etDescription.text.clear()
-            etDescription.clearFocus()
+                etDescription.text.clear()
+                etDescription.clearFocus()
 
-            val intent = Intent(this, GoalPage::class.java)
-            startActivity(intent)
+                val intent = Intent(this, GoalPage::class.java)
+                startActivity(intent)
+            }
         }
     }
     fun backButton(view: View) {
