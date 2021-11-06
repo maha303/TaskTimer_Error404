@@ -6,9 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tasktimer_error404.CongratPage
-import com.example.tasktimer_error404.GoalDetailsPage
-import com.example.tasktimer_error404.GoalPage
+import com.example.tasktimer_error404.CongratsPage
 import com.example.tasktimer_error404.R
 import com.example.tasktimer_error404.databinding.ActivityTimerPageBinding
 import kotlin.math.roundToInt
@@ -29,7 +27,7 @@ class TimerPage : AppCompatActivity() {
         binding.StartStopButton.setOnClickListener { startStopTimer() }
         binding.resetButton.setOnClickListener { resetTimer() }
         binding.completedButton.setOnClickListener {
-            val intent = Intent(this, CongratPage::class.java)
+            val intent = Intent(this, CongratsPage::class.java)
 //            intent.putExtra("task", message.t_title)
             startActivity(intent)
         }

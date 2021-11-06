@@ -13,7 +13,7 @@
             android:name=".AddGoal"
             android:exported="true" />
         <activity
-            android:name=".CongratPage"
+            android:name=".CongratsPage"
             android:exported="true" />
         <activity
             android:name=".timer.TimerPage"

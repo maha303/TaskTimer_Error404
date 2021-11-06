@@ -148,15 +148,10 @@ class GoalDetailsPage : AppCompatActivity() {
         //todo make a prompt dialog: are you sure you are done?
         val goal = selectedGoal
         taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, goal.g_icon, true.toString(), goal.g_time)
-        val intent = Intent(this, CongratPage::class.java)
-        //todo pass goal
+        val intent = Intent(this, CongratsPage::class.java)
         startActivity(intent)
-        //goal make to grey and line
     }
 }
-//todo complete goal + move to congrats
-//todo congrats
-
 
 //todo app name
 //todo timer
