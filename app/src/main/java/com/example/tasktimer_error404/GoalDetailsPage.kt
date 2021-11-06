@@ -154,7 +154,7 @@ class GoalDetailsPage : AppCompatActivity() {
 //todo app name
 //todo timer
     //make overall goal time
-//todo maybe change no task icon
+
 //todo alert dialog pretty ui
 //todo 5 alert dialogs (2 in goal details - 2 in goal - 1 when goal complete)
 /*

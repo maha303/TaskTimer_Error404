@@ -1,77 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    app:cardCornerRadius="12dp"
+    android:id="@+id/cvGoalItem"
+    android:layout_margin="16dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
-        android:id="@+id/cvGoalItem"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_margin="5dp">
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                app:cardPreventCornerOverlap="false"-->
-<!--                android:layout_margin="5dp"-->
-<!--                app:cardCornerRadius="12dp"-->
-<!--                >-->
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
 
-<!--&lt;!&ndash;                <ImageView&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:id="@+id/goal_image"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_height="match_parent"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:adjustViewBounds="true"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:scaleType="centerCrop"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:background="#EAEAE9"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:src="@drawable/add" />&ndash;&gt;-->
-
-<!--            </androidx.cardview.widget.CardView>-->
+            <TextView
+                android:id="@+id/tvGoalItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Goal"
+                android:textColor="#373737"
+                android:layout_weight="1"
+                android:textSize="22dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvGoalItemTitle"
+                    android:id="@+id/tvtotalTimetitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="sans-serif"
-                    android:text="Goal"
-                    android:textColor="#373737"
-                    android:textSize="20dp" />
+                    android:layout_marginStart="15dp"
+                    android:text="Total time: "
+                    android:textColor="#DA997F"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvtotalTime"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text=""
+                    android:textSize="16dp"
+                    android:textColor="#373737"
+                    android:textStyle="bold" />
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/ivGoalItem"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_margin="8dp"
-                app:srcCompat="@drawable/arrow_forward" />
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/ivGoalItem"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="8dp"
+            app:srcCompat="@drawable/arrow_forward" />
+    </LinearLayout>
+
 </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
