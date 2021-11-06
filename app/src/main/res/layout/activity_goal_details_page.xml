@@ -62,7 +62,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:text="Description Description Description Goal Description Description Description"
         android:textAlignment="center"
@@ -77,18 +77,19 @@
     <LinearLayout
         android:id="@+id/llnoTask"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="345dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
-        android:orientation="vertical"
-        android:visibility="gone"
         android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/llGoalDetailsAddTask"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGoalDetailsDescription">
+        app:layout_constraintTop_toBottomOf="@+id/tvGoalDetailsDescription"
+        app:layout_constraintVertical_bias="0.16">
 
         <ImageView
             android:id="@+id/imageView"
@@ -100,12 +101,12 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please add your first task"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:textAlignment="center"
             android:fontFamily="@font/lobster_regular"
-            android:textColor="@color/white"/>
+            android:text="Please add your tasks!"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

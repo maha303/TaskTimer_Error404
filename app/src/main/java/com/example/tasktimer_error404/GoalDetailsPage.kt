@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.RIGHT
@@ -33,12 +34,23 @@ class GoalDetailsPage : AppCompatActivity() {
         getGoalDetails()
         initializeViewModel()
         //todo llnoTask
+
     }
 
     private lateinit var taskViewModel: MainViewModel
     private fun initializeViewModel(){
         taskViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        taskViewModel.getTasks(selectedGoal.g_id).observe(this, { tasks -> adapterTask.update(tasks) })
+        taskViewModel.getTasks(selectedGoal.g_id).observe(this, { tasks ->
+            if(tasks.isEmpty()) {
+                Log.d("TAG GDP", "task list is empty")
+                binding.llnoTask.isVisible = true
+            }
+            else{
+                Log.d("TAG GDP", "task list is: $tasks")
+                binding.llnoTask.isVisible = false
+            }
+            adapterTask.update(tasks)
+        })
     }
 
     private lateinit var binding: ActivityGoalDetailsPageBinding
@@ -131,12 +143,20 @@ class GoalDetailsPage : AppCompatActivity() {
         alert.show()
     }
 }
+//todo complete goal + move to congrats
+//todo congrats
+//todo ll
+
+//todo save state from timer
 
 //todo app name
 //todo add task prompt
 //todo time
-    //time saved on timer page
-    //make overall goal time
+
+//state from timer page
+
+//time saved on timer page
+//make overall goal time
 
 //todo alert dialog pretty ui
 //todo finish goal
