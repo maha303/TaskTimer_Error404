@@ -47,6 +47,7 @@ class GoalDetailsPage : AppCompatActivity() {
                 Log.d("TAG GDP", "task list is: $tasks")
                 binding.llnoTask.isVisible = false
             }
+            setOverAllTime(tasks)
             adapterTask.update(tasks)
         })
     }
@@ -148,20 +149,27 @@ class GoalDetailsPage : AppCompatActivity() {
         taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, true.toString(), goal.g_time)
 
     }
+
+    private fun setOverAllTime(tasks: List<Task>){
+        var sum = 0.0
+        for (i in tasks.indices){
+            sum += tasks[i].t_time
+        }
+        val goal = selectedGoal
+        taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, goal.g_state, sum)
+    }
 }
 
-
 //todo app name
+
+//Lubabah
+//todo make goal title mandatory and description optional
+//todo instructions
+
+//Zahrah
 //todo timer
-    //make overall goal time
 
-//todo alert dialog pretty ui
-//todo 5 alert dialogs (2 in goal details - 2 in goal - 1 when goal complete)
-/*
-
-Tapping another task while a timer is active, should pause the active timer and start the timer of the tapped task
-A new fragment/activity should display all tasks and the amount of time spent on each task
-Make sure to keep track of the total time spent on each task and a total for all tasks
-Spend some time making sure that users understand how to use your app (include instructions)
-
- */
+//Lina
+//todo alert dialog pretty ui (optional)
+//todo 5 alert dialogs (2 in goal details when swipe + 2 in goal when swipe + 1 when goal complete)
+//todo display task time for each task - similar to goal
