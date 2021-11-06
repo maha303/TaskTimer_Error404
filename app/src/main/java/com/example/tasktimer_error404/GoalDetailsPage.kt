@@ -7,9 +7,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -66,7 +69,7 @@ class GoalDetailsPage : AppCompatActivity() {
         }
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             when{
-                LEFT == direction -> taskViewModel.deleteTask(adapterTask.getTaskID(viewHolder.adapterPosition))
+                LEFT == direction -> delDialog(adapterTask.getTask(viewHolder.adapterPosition))
                 RIGHT == direction -> alertDialog(adapterTask.getTask(viewHolder.adapterPosition))
             }
         }
@@ -120,36 +123,11 @@ class GoalDetailsPage : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun alertDialog(task: Task) {
-        val dialogBuilder = AlertDialog.Builder(this)
-        val newLayout = LinearLayout(this)
-        newLayout.orientation = LinearLayout.VERTICAL
-            val newTask = EditText(this)
-            newTask.hint = task.t_title
-            newLayout.addView(newTask)
-            Log.d("TAG ALERT", "INSIDE UPDATE")
-            dialogBuilder
-                .setPositiveButton("OK") { _, _ ->
-                    Log.d("TAG ALERT", "INSIDE POS BUTTON")
-                    Log.d("TAG ALERT", "task IS: $task")
-                    taskViewModel.editTask(task.t_id, newTask.text.toString(), task.t_state, task.t_time, task.goal_id)
-                }
-                .setNegativeButton("Cancel") { dialog, _ ->
-                    dialog.cancel()
-                    taskViewModel.editTask(task.t_id, task.t_title, task.t_state, task.t_time, task.goal_id)
-                }
-
-        val alert = dialogBuilder.create()
-        alert.setTitle("Edit Task")
-        alert.setView(newLayout)
-        alert.show()
-    }
 
     fun completeGoal(view: View) {
-        //todo make a prompt dialog: are you sure you are done?
-        val goal = selectedGoal
-        taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, true.toString(), goal.g_time)
-
+//        val goal = selectedGoal
+//        taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, true.toString(), goal.g_time)
+        Dialog()
     }
 
     private fun setOverAllTime(tasks: List<Task>){
@@ -160,6 +138,78 @@ class GoalDetailsPage : AppCompatActivity() {
         val goal = selectedGoal
         taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, goal.g_state, sum)
     }
+    fun alertDialog(task: Task){
+        //Inflate the dialog as custom view
+        val messageBoxView = LayoutInflater.from(this).inflate(R.layout.edit_alartdialog, null)
+        //AlertDialogBuilder
+        val messageBoxBuilder = AlertDialog.Builder(this).setView(messageBoxView)
+        val  messageBoxInstance = messageBoxBuilder.show()
+        var pretask = task.t_title
+        //setting text values
+        val et_g_t_task=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_task)
+        val edit_Btn_ok=messageBoxInstance.findViewById<Button>(R.id.edit_Btn_ok)
+        val edit_Btn_cancel=messageBoxInstance.findViewById<Button>(R.id.edit_Btn_cancel)
+        et_g_t_task.hint= task.t_title
+        edit_Btn_ok.setOnClickListener {
+            if(et_g_t_task.text.isNotEmpty()){
+                pretask=et_g_t_task.text.toString()
+            }
+            taskViewModel.editTask(task.t_id, pretask, task.t_state, task.t_time, task.goal_id)
+
+            messageBoxInstance.dismiss()
+        }
+        //set Listener
+        edit_Btn_cancel.setOnClickListener(){
+            //close dialog
+            taskViewModel.editTask(task.t_id, task.t_title, task.t_state, task.t_time, task.goal_id)
+            messageBoxInstance.dismiss()
+        }
+    }
+    fun delDialog(task:Task){
+        //Inflate the dialog as custom view
+        val messageBoxView = LayoutInflater.from(this).inflate(R.layout.dialog, null)
+        //AlertDialogBuilder
+        val messageBoxBuilder = AlertDialog.Builder(this).setView(messageBoxView)
+        val  messageBoxInstance = messageBoxBuilder.show()
+        //setting text values
+        val ok_Btn=messageBoxInstance.findViewById<Button>(R.id.ok_Btn)
+        val cancel_Btn=messageBoxInstance.findViewById<Button>(R.id.cancel_Btn)
+
+        ok_Btn.setOnClickListener {
+            taskViewModel.deleteTask(task.t_id)
+            messageBoxInstance.dismiss()
+        }
+        //set Listener
+        cancel_Btn.setOnClickListener(){
+            //close dialog
+            taskViewModel.editTask(task.t_id, task.t_title, task.t_state, task.t_time, task.goal_id)
+            messageBoxInstance.dismiss()
+        }
+    }
+    fun Dialog(){
+        //Inflate the dialog as custom view
+        val messageBoxView = LayoutInflater.from(this).inflate(R.layout.dialog, null)
+        //AlertDialogBuilder
+        val messageBoxBuilder = AlertDialog.Builder(this).setView(messageBoxView)
+        val  messageBoxInstance = messageBoxBuilder.show()
+
+        //setting text values
+        val ok_Btn=messageBoxInstance.findViewById<Button>(R.id.ok_Btn)
+        val cancel_Btn=messageBoxInstance.findViewById<Button>(R.id.cancel_Btn)
+
+        ok_Btn.setOnClickListener {
+            val goal = selectedGoal
+            taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, true.toString(), goal.g_time)
+            messageBoxInstance.dismiss()
+            val intent = Intent(this, CongratsPage::class.java)
+            startActivity(intent)
+        }
+        //set Listener
+        cancel_Btn.setOnClickListener(){
+            //close dialog
+            messageBoxInstance.dismiss()
+        }
+    }
 }
 
 //todo app name
@@ -168,6 +218,4 @@ class GoalDetailsPage : AppCompatActivity() {
 //todo instructions
 
 //Lina
-//todo alert dialog pretty ui (optional)
-//todo 5 alert dialogs (2 in goal details when swipe + 2 in goal when swipe + 1 when goal complete)
 //todo display task time for each task - similar to goal

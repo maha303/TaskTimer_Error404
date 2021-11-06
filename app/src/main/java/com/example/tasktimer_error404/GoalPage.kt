@@ -9,8 +9,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import android.util.TypedValue
+import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -66,7 +69,7 @@ class GoalPage : AppCompatActivity() {
         }
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             when{
-                ItemTouchHelper.LEFT == direction -> goalViewModel.deleteGoal(adapterGoal.getGoalID(viewHolder.adapterPosition))
+                ItemTouchHelper.LEFT == direction -> deleteDialog(adapterGoal.getGoal(viewHolder.adapterPosition))
                 ItemTouchHelper.RIGHT == direction -> alertDialog(adapterGoal.getGoal(viewHolder.adapterPosition))
             }
 
@@ -91,35 +94,58 @@ class GoalPage : AppCompatActivity() {
         goalViewModel.getGoals().observe(this, { goals -> adapterGoal.updateRecycleView(goals) })
     }
 
-    fun alertDialog(goal: Goal) {
-        val dialogBuilder = AlertDialog.Builder(this)
-        val newLayout = LinearLayout(this)
-        newLayout.orientation = LinearLayout.VERTICAL
-
-        val titleGoal = EditText(this)
-        titleGoal.setText(goal.g_title)
-
-        val descriptionGoal = EditText(this)
-        descriptionGoal.setText(goal.g_description)
-
-        newLayout.addView(titleGoal)
-        newLayout.addView(descriptionGoal)
-
-        Log.d("TAG ALERT", "INSIDE UPDATE")
-        dialogBuilder
-            .setPositiveButton("OK") { _, _ ->
-                Log.d("TAG ALERT", "INSIDE POS BUTTON")
-                Log.d("TAG ALERT", "goal IS: $goal")
-                goalViewModel.editGoal(goal.g_id, titleGoal.text.toString(), descriptionGoal.text.toString(),  goal.g_state, goal.g_time)
+    fun alertDialog(goal: Goal){
+        //Inflate the dialog as custom view
+        val messageBoxView = LayoutInflater.from(this).inflate(R.layout.alartdialog, null)
+        //AlertDialogBuilder
+        val messageBoxBuilder = AlertDialog.Builder(this).setView(messageBoxView)
+        val  messageBoxInstance = messageBoxBuilder.show()
+        var title = goal.g_title
+        var descriptions = goal.g_description
+        //setting text values
+    val et_g_t_title=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_title)
+    val et_g_t_descriptions=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_descriptions)
+    val editBtn_ok=messageBoxInstance.findViewById<Button>(R.id.editBtn_ok)
+    val editBtn_cancel=messageBoxInstance.findViewById<Button>(R.id.editBtn_cancel)
+        et_g_t_title.hint= goal.g_title
+        et_g_t_descriptions.hint= goal.g_description
+        editBtn_ok.setOnClickListener {
+            if(et_g_t_title.text.isNotEmpty()){
+                title=et_g_t_title.text.toString()
             }
-            .setNegativeButton("Cancel") { dialog, _ ->
-                dialog.cancel()
-                goalViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description,  goal.g_state, goal.g_time)
+            if(et_g_t_descriptions.text.isNotEmpty()){
+                descriptions=et_g_t_descriptions.text.toString()
             }
+            goalViewModel.editGoal(goal.g_id, title, descriptions,  goal.g_state, goal.g_time)
+            messageBoxInstance.dismiss()
+        }
+        //set Listener
+        editBtn_cancel.setOnClickListener(){
+            //close dialog
+            goalViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description,  goal.g_state, goal.g_time)
+            messageBoxInstance.dismiss()
+        }
+    }
+    fun deleteDialog(goal: Goal){
+        //Inflate the dialog as custom view
+        val messageBoxView = LayoutInflater.from(this).inflate(R.layout.dialog, null)
+        //AlertDialogBuilder
+        val messageBoxBuilder = AlertDialog.Builder(this).setView(messageBoxView)
+        val  messageBoxInstance = messageBoxBuilder.show()
 
-        val alert = dialogBuilder.create()
-        alert.setTitle("Edit Goal")
-        alert.setView(newLayout)
-        alert.show()
+        //setting text values
+        val ok_Btn=messageBoxInstance.findViewById<Button>(R.id.ok_Btn)
+        val cancel_Btn=messageBoxInstance.findViewById<Button>(R.id.cancel_Btn)
+
+        ok_Btn.setOnClickListener {
+            goalViewModel.deleteGoal(goal.g_id)
+            messageBoxInstance.dismiss()
+        }
+        //set Listener
+        cancel_Btn.setOnClickListener(){
+            //close dialog
+            goalViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description,  goal.g_state, goal.g_time)
+            messageBoxInstance.dismiss()
+        }
     }
 }
