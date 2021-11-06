@@ -19,7 +19,7 @@ class AddGoal : AppCompatActivity() {
     private lateinit var etDescription: EditText
 
     private val STATUS: String = "false"
-    private val TIME: String = "00:00:00"
+    private val TIME: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@ class AddGoal : AppCompatActivity() {
             val description = etDescription.text.toString()
 
             initializeViewModel()
-            goalViewModel.addGoal(title,description,"",STATUS,TIME)
+            goalViewModel.addGoal(title,description,STATUS,TIME)
 
             etTitle.text.clear()
             etTitle.clearFocus()

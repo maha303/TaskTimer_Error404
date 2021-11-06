@@ -19,19 +19,9 @@ interface TimerDao {
     @Delete
     suspend fun deleteGoal(goal: Goal)
 
-    //we dont really want this
-//    @Transaction  //what is this
-//    @Query("SELECT * FROM TasksTable ORDER BY t_id ASC")
-//    fun getTasks(): LiveData<List<Task>>
-
-    //todo need fixing
     @Transaction
     @Query("SELECT * FROM TasksTable WHERE goal_id=:goal ORDER BY t_id ASC")
     fun getTasks(goal: Int): LiveData<List<Task>>
-
-    //@Transaction
-    //@Query("SELECT * FROM GoalsTable WHERE g_id = :goal_id ORDER BY g_id ASC")
-    //fun getGoalWithTasks(goal_id : Int): LiveData<List<Goal>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addTask(task: Task)

@@ -8,6 +8,6 @@ data class Task(
     @PrimaryKey(autoGenerate = true)
     val t_id: Int,
     val t_title: String,
-    val t_state: String, //todo turn to boolean
-    val t_time: String, //todo or date
+    val t_state: String,
+    val t_time: Double,
     val goal_id: Int)

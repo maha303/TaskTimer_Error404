@@ -9,9 +9,6 @@ data class Goal(
     @PrimaryKey(autoGenerate = true)
     val g_id: Int,
     val g_title: String,
-    val g_description: String, //todo make optional
-    val g_icon: String, //bitmap
-    val g_state: String, //completed - un (todo turn to boolean)
-    val g_time: String) //todo make state and total time default
-
-// what if we added tasks as a list
+    val g_description: String,
+    val g_state: String,
+    val g_time: Double)

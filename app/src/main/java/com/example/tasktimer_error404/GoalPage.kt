@@ -36,8 +36,6 @@ class GoalPage : AppCompatActivity() {
         initializeRecycler()
         initializeViewModel()
 
-        var selectedGoal = Goal(1,"Work Out Goal","make it optional", "", "true", "")
-
         goal_add = findViewById(R.id.goal_add)
         goal_add.setOnClickListener{
             val intent = Intent(this, AddGoal::class.java)
@@ -71,7 +69,7 @@ class GoalPage : AppCompatActivity() {
                 ItemTouchHelper.LEFT == direction -> goalViewModel.deleteGoal(adapterGoal.getGoalID(viewHolder.adapterPosition))
                 ItemTouchHelper.RIGHT == direction -> alertDialog(adapterGoal.getGoal(viewHolder.adapterPosition))
             }
-            //todo add undo on delete or alert dialog
+
         }
         override fun onChildDraw (c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean){
             RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
@@ -112,11 +110,11 @@ class GoalPage : AppCompatActivity() {
             .setPositiveButton("OK") { _, _ ->
                 Log.d("TAG ALERT", "INSIDE POS BUTTON")
                 Log.d("TAG ALERT", "goal IS: $goal")
-                goalViewModel.editGoal(goal.g_id, titleGoal.text.toString(), descriptionGoal.text.toString(), " ", goal.g_state, goal.g_time)
+                goalViewModel.editGoal(goal.g_id, titleGoal.text.toString(), descriptionGoal.text.toString(),  goal.g_state, goal.g_time)
             }
             .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.cancel()
-                goalViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, " ", goal.g_state, goal.g_time)
+                goalViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description,  goal.g_state, goal.g_time)
             }
 
         val alert = dialogBuilder.create()

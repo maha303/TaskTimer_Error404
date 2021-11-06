@@ -94,10 +94,9 @@ class GoalDetailsPage : AppCompatActivity() {
         var id = intent.extras?.getInt("id")!!
         var title = intent.extras?.getString("title")!!
         var description = intent.extras?.getString("description")!!
-        var icon = intent.extras?.getString("icon")!!
         var state = intent.extras?.getString("state")!!
-        var time = intent.extras?.getString("time")!!
-        selectedGoal = Goal(id, title, description, icon, state, time)
+        var time = intent.extras?.getDouble("time")!!
+        selectedGoal = Goal(id, title, description, state, time)
         binding.tvGoalDetailsTitle.text = selectedGoal.g_title
         binding.tvGoalDetailsDescription.text = selectedGoal.g_description
     }
@@ -107,7 +106,7 @@ class GoalDetailsPage : AppCompatActivity() {
         val task = binding.etGoalDetailsAddTask.text.toString()
         binding.etGoalDetailsAddTask.text.clear()
         binding.etGoalDetailsAddTask.clearFocus()
-        taskViewModel.addTask(0, task, "", "", selectedGoal.g_id)
+        taskViewModel.addTask(0, task, "false", 0.0, selectedGoal.g_id)
     }
 
     fun setState(task: Task, state: Boolean){
@@ -146,20 +145,18 @@ class GoalDetailsPage : AppCompatActivity() {
     fun completeGoal(view: View) {
         //todo make a prompt dialog: are you sure you are done?
         val goal = selectedGoal
-        taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, goal.g_icon, true.toString(), goal.g_time)
+        taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, true.toString(), goal.g_time)
 
     }
 }
-//todo complete goal + move to congrats
-//todo congrats
+
 
 //todo app name
 //todo timer
-    //state from timer page
-    //time saved on timer page
     //make overall goal time
 //todo maybe change no task icon
 //todo alert dialog pretty ui
+//todo 5 alert dialogs (2 in goal details - 2 in goal - 1 when goal complete)
 /*
 
 Tapping another task while a timer is active, should pause the active timer and start the timer of the tapped task

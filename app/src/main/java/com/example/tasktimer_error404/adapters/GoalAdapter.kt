@@ -30,7 +30,7 @@ class GoalAdapter(val activity: GoalPage):
         val goal = goals[position]
         holder.binding.apply {
             tvGoalItemTitle.text = goal.g_title //name of the entity column
-            tvtotalTime.text = goal.g_time
+            tvtotalTime.text = goal.g_time.toString() //todo convert to string
             if(goal.g_state == true.toString()) { //complete
                 tvGoalItemTitle.paintFlags = tvGoalItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 tvGoalItemTitle.setTextColor(Color.GRAY)
@@ -44,7 +44,6 @@ class GoalAdapter(val activity: GoalPage):
                 intent.putExtra("id", goal.g_id)
                 intent.putExtra("title", goal.g_title)
                 intent.putExtra("description", goal.g_description)
-                intent.putExtra("icon", goal.g_icon)
                 intent.putExtra("state", goal.g_state)
                 intent.putExtra("time", goal.g_time)
                 activity.startActivity(intent)

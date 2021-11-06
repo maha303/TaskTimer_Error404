@@ -18,7 +18,6 @@ class TimerRepository(private val timerDao: TimerDao) {
         timerDao.deleteGoal(goal)
     }
 
-    //val getTasks: LiveData<List<Task>> = timerDao.getTasks(goal.g_id)
      fun getTasks_fromGoal(goalID: Int): LiveData<List<Task>> {
         val getTasks: LiveData<List<Task>> = timerDao.getTasks(goalID)
         return getTasks
@@ -36,4 +35,3 @@ class TimerRepository(private val timerDao: TimerDao) {
         timerDao.deleteTask(task)
     }
 }
-//todo update after DAO

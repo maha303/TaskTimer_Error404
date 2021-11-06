@@ -4,9 +4,12 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.icu.text.SimpleDateFormat
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer_error404.*
@@ -25,13 +28,15 @@ class TimerPage : AppCompatActivity() {
     private var task_id: Int? = 0
     private var task_title: String? = ""
     private var task_state: String? = ""
-    private var task_time: String? = ""
+    private var task_time: Double? = 0.0
     private var goal_id: Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTimerPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.timeTv.text = "00:00:00"
 
         initializeViewModel()
         getTaskDetails()
@@ -41,8 +46,7 @@ class TimerPage : AppCompatActivity() {
         binding.completedButton.setOnClickListener {
             task_state = "true"
             updateTimer()
-            val intent = Intent(this, CongratsPage::class.java)
-            startActivity(intent)
+            finish()
         }
         binding.timerHome.setOnClickListener {
             updateTimer()
@@ -59,11 +63,13 @@ class TimerPage : AppCompatActivity() {
         task_id = intent.extras?.getInt("task_id")!!
         task_title = intent.extras?.getString("task_title")!!
         task_state = intent.extras?.getString("task_state")!!
-        task_time = intent.extras?.getString("task_time")!!
+        task_time = intent.extras?.getDouble("task_time")!!
         goal_id = intent.extras?.getInt("goal_id")!!
 
         binding.tvTimerTitle.text = task_title
-        binding.timeTv.text = task_time
+        time = task_time as Double
+        binding.timeTv.text = getTimeStringFromDouble(time!!)
+        //binding.timeTv.text = task_time.toString() //todo convert to string
     }
 
     private lateinit var taskViewModel: MainViewModel
@@ -72,14 +78,16 @@ class TimerPage : AppCompatActivity() {
     }
 
     private fun updateTimer(){
-        taskViewModel.editTask(task_id!!, task_title!!, task_state!!, binding.timeTv.text.toString(), goal_id!!)
+        //todo convert 4th column
+        //binding.timeTv.text.toString().toDouble()
+        taskViewModel.editTask(task_id!!, task_title!!, task_state!!, task_time!!, goal_id!!)
     }
 
     private fun resetTimer() {
         stopTimer()
         time = 0.0
         binding.timeTv.text = getTimeStringFromDouble(time)
-        task_time = getTimeStringFromDouble(time)
+        //todo task_time = getTimeStringFromDouble(time)
     }
 
     private fun startStopTimer() {
@@ -90,6 +98,9 @@ class TimerPage : AppCompatActivity() {
     }
 
     private fun startTimer() {
+        Log.d("MyTime", "onstart"+time.toString())
+        //time = task_time
+
         serviceIntent.putExtra(TimerService.TIME_EXTRA,time)
         startService(serviceIntent)
         binding.StartStopButton.setImageResource(R.drawable.pause)
@@ -106,12 +117,22 @@ class TimerPage : AppCompatActivity() {
     }
 
     private val updateTime:BroadcastReceiver = object :BroadcastReceiver(){
+        @RequiresApi(Build.VERSION_CODES.N)
         override fun onReceive(context: Context, intent: Intent) {
-            if(task_time == "00:00:00" || task_time == null || task_time == ""){
+            if(task_time == 0.0 || task_time == null){
                 time = intent.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
                 binding.timeTv.text = getTimeStringFromDouble(time)
             } else {
-                binding.timeTv.text = task_time
+                //todo convert time
+                binding.timeTv.text = getTimeStringFromDouble(time)
+
+                //time = intent.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
+                //val df = SimpleDateFormat("HH:mm:ss")
+                //var current_time = df.parse(task_time).time.toDouble()
+
+                //time = intent.getDoubleExtra(TimerService.TIME_EXTRA,current_time)
+                //binding.timeTv.text = getTimeStringFromDouble(time)
+                //Log.d("MyTime", "current_time " + current_time.toString()+" time"+time.toString())
             }
         }
     }
