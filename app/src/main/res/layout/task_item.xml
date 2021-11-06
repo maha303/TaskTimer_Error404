@@ -55,10 +55,10 @@
 
             <ImageView
                 android:id="@+id/ivTaskItem"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_margin="8dp"
-                app:srcCompat="@drawable/arrow_forward" />
+                app:srcCompat="@drawable/ic_baseline_timer_24" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

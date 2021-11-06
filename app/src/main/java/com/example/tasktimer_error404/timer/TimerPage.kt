@@ -95,3 +95,5 @@ class TimerPage : AppCompatActivity() {
 
 
 }
+//todo home
+//todo save time

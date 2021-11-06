@@ -22,35 +22,48 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_margin="5dp">
-            <androidx.cardview.widget.CardView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:cardPreventCornerOverlap="false"
-                android:layout_margin="5dp"
-                app:cardCornerRadius="12dp"
-                >
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                app:cardPreventCornerOverlap="false"-->
+<!--                android:layout_margin="5dp"-->
+<!--                app:cardCornerRadius="12dp"-->
+<!--                >-->
 
-                <ImageView
-                    android:id="@+id/goal_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"
-                    android:background="#EAEAE9"
-                    android:src="@drawable/add" />
+<!--&lt;!&ndash;                <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:id="@+id/goal_image"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:adjustViewBounds="true"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:scaleType="centerCrop"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:background="#EAEAE9"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:src="@drawable/add" />&ndash;&gt;-->
 
-            </androidx.cardview.widget.CardView>
+<!--            </androidx.cardview.widget.CardView>-->
 
-            <TextView
-                android:id="@+id/tvGoalItemTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Goal"
-                android:fontFamily="sans-serif"
-                android:textSize="20dp"
-                android:textColor="#373737"
-                />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvGoalItemTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:text="Goal"
+                    android:textColor="#373737"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/totalTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/ivGoalItem"
