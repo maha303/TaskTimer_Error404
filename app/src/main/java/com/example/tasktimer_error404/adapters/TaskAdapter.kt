@@ -15,7 +15,7 @@ import com.example.tasktimer_error404.database.Task
 import com.example.tasktimer_error404.databinding.TaskItemBinding
 import com.example.tasktimer_error404.timer.TimerPage
 
-class TaskAdapter (val context: Context): RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter (val context: Context, val activity: GoalDetailsPage): RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     var messages = emptyList<Task>()
     var selecteTaskID: Int? = null
 
@@ -41,15 +41,16 @@ class TaskAdapter (val context: Context): RecyclerView.Adapter<TaskAdapter.ViewH
                 context.startActivity(intent)
             }
             cbTaskItem.setOnClickListener {
-                if (cbTaskItem.isChecked) {
-                    tvTaskItemTitle.paintFlags =
-                        tvTaskItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                if (cbTaskItem.isChecked) { // completed
+                    tvTaskItemTitle.paintFlags = tvTaskItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     tvTaskItemTitle.setTextColor(Color.GRAY)
                     ivTaskItem.isClickable = false
-                } else {
+                    activity.setState(message, true)
+                } else { //incomplete
                     tvTaskItemTitle.paintFlags = 0
                     tvTaskItemTitle.setTextColor(Color.BLACK)
                     ivTaskItem.isClickable = true
+                    activity.setState(message, false)
                 }
             }
             cvTaskItem.setOnClickListener { selecteTaskID = message.t_id }

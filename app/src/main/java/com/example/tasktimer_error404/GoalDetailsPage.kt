@@ -71,7 +71,7 @@ class GoalDetailsPage : AppCompatActivity() {
     }
     private lateinit var adapterTask: TaskAdapter
     private fun initializeRecycler() {
-        adapterTask = TaskAdapter(this)
+        adapterTask = TaskAdapter(this, this)
         binding.rvGoalDetailsTasks.adapter = adapterTask
         binding.rvGoalDetailsTasks.layoutManager = LinearLayoutManager(this)
         Log.d("TAG MAIN", "RV INITIALIZED")
@@ -100,6 +100,10 @@ class GoalDetailsPage : AppCompatActivity() {
         taskViewModel.addTask(0, task, "", "", selectedGoal.g_id)
     }
 
+    fun setState(task: Task, state: Boolean){
+        taskViewModel.editTask(task.t_id, task.t_title, state.toString(), task.t_time, task.goal_id)
+    }
+
     fun backButton(view: View) {
         finish()
     }
@@ -125,17 +129,20 @@ class GoalDetailsPage : AppCompatActivity() {
         alert.setView(newLayout)
         alert.show()
     }
-
 }
-
 //todo app name
 //todo add task prompt
 //todo change state and time
+    // state changes on check and save
+    // next step: move to completed list
+
+    //time saved on timer page
+    //make overall goal time
 //todo alert dialog pretty ui
+//todo finish goal
 
 //todo description ui
 //todo task item ui -> timer icon
-
 /*
 Tapping another task while a timer is active, should pause the active timer and start the timer of the tapped task
 A new fragment/activity should display all tasks and the amount of time spent on each task
