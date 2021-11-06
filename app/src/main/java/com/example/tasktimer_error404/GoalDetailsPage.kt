@@ -1,12 +1,15 @@
 package com.example.tasktimer_error404
 
+import android.app.AlertDialog
 import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.View
+import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.RIGHT
@@ -15,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimer_error404.adapters.TaskAdapter
 import com.example.tasktimer_error404.database.Goal
+import com.example.tasktimer_error404.database.Task
 import com.example.tasktimer_error404.databinding.ActivityGoalDetailsPageBinding
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
@@ -28,9 +32,6 @@ class GoalDetailsPage : AppCompatActivity() {
         initializeRecycler()
         getGoalDetails()
         initializeViewModel()
-        binding.taskBack.setOnClickListener {
-            finish()
-        }
     }
 
     private lateinit var taskViewModel: MainViewModel
@@ -53,16 +54,17 @@ class GoalDetailsPage : AppCompatActivity() {
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
             when{
                 LEFT == direction -> taskViewModel.deleteTask(adapterTask.getTaskID(viewHolder.adapterPosition))
-                RIGHT == direction -> 1//todo add edit function
+                RIGHT == direction -> alertDialog(adapterTask.getTask(viewHolder.adapterPosition))
             }
-            //todo add swipe ui
-            //todo add undo on delete
+            //todo add undo on delete or alert dialog
         }
         override fun onChildDraw (c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean){
             RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                 .addSwipeRightBackgroundColor(Color.GREEN).addSwipeLeftBackgroundColor(Color.RED) //todo change colors to prettier colors
                 .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24).addSwipeLeftActionIcon(R.drawable.delete_icon)
                 .setActionIconTint(Color.WHITE)
+                .addSwipeLeftLabel("DELETE").setSwipeLeftLabelColor(Color.WHITE).setSwipeLeftLabelTextSize(TypedValue.COMPLEX_UNIT_DIP, 18f)
+                .addSwipeRightLabel("EDIT").setSwipeRightLabelColor(Color.WHITE).setSwipeRightLabelTextSize(TypedValue.COMPLEX_UNIT_DIP, 18f)
                 .create().decorate()
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         }
@@ -98,13 +100,38 @@ class GoalDetailsPage : AppCompatActivity() {
         taskViewModel.addTask(0, task, "", "", selectedGoal.g_id)
     }
 
+    fun backButton(view: View) {
+        finish()
+    }
+
+    fun alertDialog(task: Task) {
+        val dialogBuilder = AlertDialog.Builder(this)
+        val newLayout = LinearLayout(this)
+        newLayout.orientation = LinearLayout.VERTICAL
+            val newTask = EditText(this)
+            newTask.hint = task.t_title
+            newLayout.addView(newTask)
+            Log.d("TAG ALERT", "INSIDE UPDATE")
+            dialogBuilder
+                .setPositiveButton("OK") { _, _ ->
+                    Log.d("TAG ALERT", "INSIDE POS BUTTON")
+                    Log.d("TAG ALERT", "task IS: $task")
+                    taskViewModel.editTask(task.t_id, newTask.text.toString(), task.t_state, task.t_time, task.goal_id)
+                }
+                .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+
+        val alert = dialogBuilder.create()
+        alert.setTitle("Edit Task")
+        alert.setView(newLayout)
+        alert.show()
+    }
+
 }
 
 //todo app name
 //todo add task prompt
 //todo change state and time
-//todo add update
-//todo add swipe decorator
+//todo alert dialog pretty ui
 
 //todo description ui
 //todo task item ui -> timer icon

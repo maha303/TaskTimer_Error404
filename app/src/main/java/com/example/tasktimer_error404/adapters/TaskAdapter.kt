@@ -68,4 +68,9 @@ class TaskAdapter (val context: Context): RecyclerView.Adapter<TaskAdapter.ViewH
         var message = messages[position]
         return message.t_id
     }
+
+    fun getTask(position: Int): Task{
+        var message = messages[position]
+        return message
+    }
 }
