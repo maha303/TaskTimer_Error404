@@ -158,6 +158,7 @@ class GoalDetailsPage : AppCompatActivity() {
     //state from timer page
     //time saved on timer page
     //make overall goal time
+    //tv in goal + goal details to display time
 //todo maybe change no task icon
 //todo alert dialog pretty ui
 //todo goal item ui + add goal
