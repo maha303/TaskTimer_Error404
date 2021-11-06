@@ -36,10 +36,6 @@ class TimerPage : AppCompatActivity() {
 
         serviceIntent = Intent(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIME_UPDATED))
-        binding.timerBack.setOnClickListener {
-            finish()
-        }
-
     }
     private fun resetTimer() {
         stopTimer()
