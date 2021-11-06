@@ -131,20 +131,20 @@ class GoalDetailsPage : AppCompatActivity() {
         alert.show()
     }
 }
+
 //todo app name
 //todo add task prompt
-//todo change state and time
-    // state changes on check and save
-    // next step: move to completed list
-
+//todo time
     //time saved on timer page
     //make overall goal time
+
 //todo alert dialog pretty ui
 //todo finish goal
 
 //todo description ui
 //todo task item ui -> timer icon
 /*
+
 Tapping another task while a timer is active, should pause the active timer and start the timer of the tapped task
 A new fragment/activity should display all tasks and the amount of time spent on each task
 Make sure to keep track of the total time spent on each task and a total for all tasks

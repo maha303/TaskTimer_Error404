@@ -35,21 +35,27 @@ class TaskAdapter (val context: Context, val activity: GoalDetailsPage): Recycle
         val message = messages[position]
         holder.binding.apply {
             tvTaskItemTitle.text = message.t_title
+            if(message.t_state == true.toString()) {
+                cbTaskItem.isChecked = true
+                tvTaskItemTitle.paintFlags = tvTaskItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                tvTaskItemTitle.setTextColor(Color.GRAY)
+                ivTaskItem.isClickable = false
+            }
+            else {
+                cbTaskItem.isChecked = false
+                tvTaskItemTitle.paintFlags = 0
+                tvTaskItemTitle.setTextColor(Color.BLACK)
+                ivTaskItem.isClickable = true
+            }
             ivTaskItem.setOnClickListener {
                 val intent = Intent(context, TimerPage::class.java)
                 intent.putExtra("task", message.t_title)
                 context.startActivity(intent)
             }
             cbTaskItem.setOnClickListener {
-                if (cbTaskItem.isChecked) { // completed
-                    tvTaskItemTitle.paintFlags = tvTaskItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                    tvTaskItemTitle.setTextColor(Color.GRAY)
-                    ivTaskItem.isClickable = false
+                if (cbTaskItem.isChecked) { // press cb --> completed
                     activity.setState(message, true)
                 } else { //incomplete
-                    tvTaskItemTitle.paintFlags = 0
-                    tvTaskItemTitle.setTextColor(Color.BLACK)
-                    ivTaskItem.isClickable = true
                     activity.setState(message, false)
                 }
             }
@@ -59,6 +65,8 @@ class TaskAdapter (val context: Context, val activity: GoalDetailsPage): Recycle
     }
 
     override fun getItemCount() = messages.size
+
+
 
     fun update(newMessages: List<Task>) {
         this.messages = newMessages
