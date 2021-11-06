@@ -3,53 +3,62 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
-        android:id="@+id/goalLayout"
-        android:layout_width="wrap_content"
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:clickable="true"
-        android:gravity="center"
+        app:cardCornerRadius="12dp"
+        android:id="@+id/cvGoalItem"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="5dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardPreventCornerOverlap="false"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="12dp"
+                >
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            app:cardPreventCornerOverlap="false"
-            android:layout_margin="15dp"
-            app:cardCornerRadius="12dp"
-            >
+                <ImageView
+                    android:id="@+id/goal_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="#EAEAE9"
+                    android:src="@drawable/add" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvGoalItemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Goal"
+                android:fontFamily="sans-serif"
+                android:textSize="20dp"
+                android:textColor="#373737"
+                />
 
             <ImageView
-                android:id="@+id/goal_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:background="#EAEAE9"
-                android:src="@drawable/add" />
+                android:id="@+id/ivGoalItem"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="8dp"
+                app:srcCompat="@drawable/arrow_forward" />
+        </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/goal_Title"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:singleLine="false"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:text="study"
-            android:textColor="#191717"
-            android:textSize="12dp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.cardview.widget.CardView>

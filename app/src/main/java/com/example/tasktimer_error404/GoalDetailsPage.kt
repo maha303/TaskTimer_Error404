@@ -1,5 +1,6 @@
 package com.example.tasktimer_error404
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,9 +27,9 @@ class GoalDetailsPage : AppCompatActivity() {
         initializeRecycler()
         getGoalDetails()
         initializeViewModel()
-
-
-
+        binding.taskBack.setOnClickListener {
+            finish()
+        }
     }
 
     private lateinit var taskViewModel: MainViewModel

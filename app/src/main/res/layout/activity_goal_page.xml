@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".GoalPage"
     android:background="#DA997F">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lf30_editor_cjzmcltv" />
 
     <TextView
         android:id="@+id/title"
@@ -14,7 +24,7 @@
         android:layout_marginTop="16dp"
         android:text="Goal app"
         android:textSize="40dp"
-        android:textColor="#fff"
+        android:textColor="#DA997F"
         android:fontFamily="@font/lobster_regular"
         android:textStyle="bold"
         android:letterSpacing="0.06"
@@ -37,16 +47,17 @@
         app:srcCompat="@drawable/add"
         app:tint="@color/white"/>
 
-    <GridView
-        android:id="@+id/gridView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGoalDetailsTasks"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/goal_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        android:numColumns="2"></GridView>
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
