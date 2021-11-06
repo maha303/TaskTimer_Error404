@@ -3,26 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/FTOO5/AndroidStudioProjects/TaskTimer_Error404/app/src/main/res/layout/activity_add_goal.xml" value="0.13405797101449277" />
-        <entry key="..\:/Users/FTOO5/AndroidStudioProjects/TaskTimer_Error404/app/src/main/res/layout/activity_congrat_page.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/FTOO5/AndroidStudioProjects/TaskTimer_Error404/app/src/main/res/layout/activity_goal_details_page.xml" value="0.10144927536231885" />
-        <entry key="..\:/Users/FTOO5/AndroidStudioProjects/TaskTimer_Error404/app/src/main/res/layout/activity_goal_page.xml" value="0.10144927536231885" />
-        <entry key="..\:/Users/FTOO5/AndroidStudioProjects/TaskTimer_Error404/app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />
-        <entry key="..\:/Users/FTOO5/AndroidStudioProjects/TaskTimer_Error404/app/src/main/res/layout/activity_timer_page.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/FTOO5/AndroidStudioProjects/TaskTimer_Error404/app/src/main/res/layout/goals_item.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/FTOO5/AndroidStudioProjects/TaskTimer_Error404/app/src/main/res/layout/task_item.xml" value="0.10144927536231885" />
+        <entry key="..\:/Users/lubabah/Documents/GitHub/TaskTimer_Error404/app/src/main/res/layout/activity_congrat_page.xml" value="0.1" />
+        <entry key="..\:/Users/lubabah/Documents/GitHub/TaskTimer_Error404/app/src/main/res/layout/activity_goal_details_page.xml" value="0.19655797101449277" />
+        <entry key="..\:/Users/lubabah/Documents/GitHub/TaskTimer_Error404/app/src/main/res/layout/goals_item.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/arrow_forward.xml" value="0.3697916666666667" />
         <entry key="app/src/main/res/drawable/background_circle.xml" value="0.2692307692307692" />
         <entry key="app/src/main/res/drawable/button_unchecked.xml" value="0.3697916666666667" />
         <entry key="app/src/main/res/drawable/check_circle.xml" value="0.3697916666666667" />
         <entry key="app/src/main/res/drawable/checkbox_selector.xml" value="0.3697916666666667" />
         <entry key="app/src/main/res/drawable/edit_text_style.xml" value="0.165" />
+        <entry key="app/src/main/res/drawable/home.xml" value="0.3671875" />
         <entry key="app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.3697916666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3697916666666667" />
         <entry key="app/src/main/res/drawable/pause_icon.xml" value="0.3697916666666667" />
         <entry key="app/src/main/res/drawable/play_icon.xml" value="0.3697916666666667" />
         <entry key="app/src/main/res/drawable/replay_icon.xml" value="0.3697916666666667" />
-        <entry key="app/src/main/res/layout/activity_congrat_page.xml" value="0.20555555555555555" />
+        <entry key="app/src/main/res/layout/activity_add_goal.xml" value="0.35104166666666664" />
+        <entry key="app/src/main/res/layout/activity_congrat_page.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_goal_details_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_goal_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />

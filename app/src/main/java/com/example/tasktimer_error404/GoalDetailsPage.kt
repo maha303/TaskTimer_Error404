@@ -158,7 +158,7 @@ class GoalDetailsPage : AppCompatActivity() {
     //state from timer page
     //time saved on timer page
     //make overall goal time
-//todo maybe change no task icon
+
 //todo alert dialog pretty ui
 /*
 

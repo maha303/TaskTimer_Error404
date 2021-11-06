@@ -17,33 +17,83 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/lf30_editor_cjzmcltv" />
-
-    <LinearLayout
+    <ImageView
+        android:id="@+id/addBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="backButton"
+        app:srcCompat="@drawable/home"
+        app:tint="#DA997F" />
+    <TextView
+        android:id="@+id/tvGoalDetailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Add new goal"
+        android:textSize="35dp"
+        android:textColor="#DA997F"
+        android:fontFamily="@font/lobster_regular"
+        android:textStyle="bold"
+        android:letterSpacing="0.06"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/etTitle"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="goal title" />
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <EditText
-            android:id="@+id/etDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="goal escription" />
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:paddingStart="15dp"
+                android:hint="goal title"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_style"/>
 
-        <Button
-            android:id="@+id/sanebtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="save" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/etDescription"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:paddingStart="15dp"
+                android:layout_marginBottom="20dp"
+                android:hint="goal description"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_style"/>
+
+            <Button
+                android:id="@+id/sanebtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="save"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#373737"
+                android:textSize="16dp"
+
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
