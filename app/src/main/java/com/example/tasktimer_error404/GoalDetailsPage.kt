@@ -33,8 +33,6 @@ class GoalDetailsPage : AppCompatActivity() {
         initializeRecycler()
         getGoalDetails()
         initializeViewModel()
-        //todo llnoTask
-
     }
 
     private lateinit var taskViewModel: MainViewModel
@@ -69,7 +67,6 @@ class GoalDetailsPage : AppCompatActivity() {
                 LEFT == direction -> taskViewModel.deleteTask(adapterTask.getTaskID(viewHolder.adapterPosition))
                 RIGHT == direction -> alertDialog(adapterTask.getTask(viewHolder.adapterPosition))
             }
-            //todo add undo on delete or alert dialog
         }
         override fun onChildDraw (c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean){
             RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
@@ -135,34 +132,39 @@ class GoalDetailsPage : AppCompatActivity() {
                     Log.d("TAG ALERT", "task IS: $task")
                     taskViewModel.editTask(task.t_id, newTask.text.toString(), task.t_state, task.t_time, task.goal_id)
                 }
-                .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+                .setNegativeButton("Cancel") { dialog, _ ->
+                    dialog.cancel()
+                    taskViewModel.editTask(task.t_id, task.t_title, task.t_state, task.t_time, task.goal_id)
+                }
 
         val alert = dialogBuilder.create()
         alert.setTitle("Edit Task")
         alert.setView(newLayout)
         alert.show()
     }
+
+    fun completeGoal(view: View) {
+        //todo make a prompt dialog: are you sure you are done?
+        val goal = selectedGoal
+        taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, goal.g_icon, true.toString(), goal.g_time)
+
+    }
 }
 //todo complete goal + move to congrats
 //todo congrats
-//todo ll
 
-//todo save state from timer
+
+
+
+
 
 //todo app name
-//todo add task prompt
-//todo time
-
-//state from timer page
-
-//time saved on timer page
-//make overall goal time
-
+//todo timer
+    //state from timer page
+    //time saved on timer page
+    //make overall goal time
+//todo maybe change no task icon
 //todo alert dialog pretty ui
-//todo finish goal
-
-//todo description ui
-//todo task item ui -> timer icon
 /*
 
 Tapping another task while a timer is active, should pause the active timer and start the timer of the tapped task

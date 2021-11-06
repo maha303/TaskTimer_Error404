@@ -116,7 +116,10 @@ class GoalPage : AppCompatActivity() {
                 Log.d("TAG ALERT", "goal IS: $goal")
                 goalViewModel.editGoal(goal.g_id, titleGoal.text.toString(), descriptionGoal.text.toString(), " ", goal.g_state, goal.g_time)
             }
-            .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.cancel()
+                goalViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, " ", goal.g_state, goal.g_time)
+            }
 
         val alert = dialogBuilder.create()
         alert.setTitle("Edit Goal")
