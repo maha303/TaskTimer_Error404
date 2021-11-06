@@ -69,7 +69,7 @@ class TimerPage : AppCompatActivity() {
         binding.tvTimerTitle.text = task_title
         time = task_time as Double
         binding.timeTv.text = getTimeStringFromDouble(time!!)
-        //binding.timeTv.text = task_time.toString() //todo convert to string
+
     }
 
     private lateinit var taskViewModel: MainViewModel
@@ -78,8 +78,7 @@ class TimerPage : AppCompatActivity() {
     }
 
     private fun updateTimer(){
-        //todo convert 4th column
-        //binding.timeTv.text.toString().toDouble()
+        task_time = time
         taskViewModel.editTask(task_id!!, task_title!!, task_state!!, task_time!!, goal_id!!)
     }
 
@@ -87,7 +86,6 @@ class TimerPage : AppCompatActivity() {
         stopTimer()
         time = 0.0
         binding.timeTv.text = getTimeStringFromDouble(time)
-        //todo task_time = getTimeStringFromDouble(time)
     }
 
     private fun startStopTimer() {
@@ -99,7 +97,6 @@ class TimerPage : AppCompatActivity() {
 
     private fun startTimer() {
         Log.d("MyTime", "onstart"+time.toString())
-        //time = task_time
 
         serviceIntent.putExtra(TimerService.TIME_EXTRA,time)
         startService(serviceIntent)
@@ -119,21 +116,9 @@ class TimerPage : AppCompatActivity() {
     private val updateTime:BroadcastReceiver = object :BroadcastReceiver(){
         @RequiresApi(Build.VERSION_CODES.N)
         override fun onReceive(context: Context, intent: Intent) {
-            if(task_time == 0.0 || task_time == null){
-                time = intent.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
-                binding.timeTv.text = getTimeStringFromDouble(time)
-            } else {
-                //todo convert time
-                binding.timeTv.text = getTimeStringFromDouble(time)
-
-                //time = intent.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
-                //val df = SimpleDateFormat("HH:mm:ss")
-                //var current_time = df.parse(task_time).time.toDouble()
-
-                //time = intent.getDoubleExtra(TimerService.TIME_EXTRA,current_time)
-                //binding.timeTv.text = getTimeStringFromDouble(time)
-                //Log.d("MyTime", "current_time " + current_time.toString()+" time"+time.toString())
-            }
+            time = intent.getDoubleExtra(TimerService.TIME_EXTRA,0.0)
+            binding.timeTv.text = getTimeStringFromDouble(time)
+            Log.d("MyTime",  "on update time"+time.toString())
         }
     }
 

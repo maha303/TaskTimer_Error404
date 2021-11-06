@@ -1,6 +1,7 @@
 package com.example.tasktimer_error404
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
@@ -115,7 +116,8 @@ class GoalDetailsPage : AppCompatActivity() {
     }
 
     fun backButton(view: View) {
-        finish()
+        val intent = Intent(this, GoalPage::class.java)
+        startActivity(intent)
     }
 
     fun alertDialog(task: Task) {
@@ -165,9 +167,6 @@ class GoalDetailsPage : AppCompatActivity() {
 //Lubabah
 //todo make goal title mandatory and description optional
 //todo instructions
-
-//Zahrah
-//todo timer
 
 //Lina
 //todo alert dialog pretty ui (optional)

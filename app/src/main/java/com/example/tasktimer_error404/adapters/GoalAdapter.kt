@@ -13,6 +13,7 @@ import com.example.tasktimer_error404.MainActivity
 import com.example.tasktimer_error404.database.Goal
 import com.example.tasktimer_error404.database.Task
 import com.example.tasktimer_error404.databinding.GoalsItemBinding
+import kotlin.math.roundToInt
 
 class GoalAdapter(val activity: GoalPage):
     RecyclerView.Adapter<GoalAdapter.ItemViewHolder>() {
@@ -30,7 +31,8 @@ class GoalAdapter(val activity: GoalPage):
         val goal = goals[position]
         holder.binding.apply {
             tvGoalItemTitle.text = goal.g_title //name of the entity column
-            tvtotalTime.text = goal.g_time.toString() //todo convert to string
+            tvtotalTime.text = getTimeStringFromDouble(goal.g_time) //todo convert to string
+
             if(goal.g_state == true.toString()) { //complete
                 tvGoalItemTitle.paintFlags = tvGoalItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 tvGoalItemTitle.setTextColor(Color.GRAY)
@@ -69,4 +71,15 @@ class GoalAdapter(val activity: GoalPage):
         var goal = goals[position]
         return goal
     }
+
+    private fun getTimeStringFromDouble(time: Double): String
+    {
+        val resultInt = time.roundToInt()
+        val hours = resultInt % 86400 / 3600
+        val minutes = resultInt % 86400 % 3600 / 60
+        val seconds = resultInt % 86400 % 3600 % 60
+        return makeTimeString(hours,minutes,seconds)
+    }
+
+    private fun makeTimeString(hour: Int, min: Int, sec: Int): String = String.format("%02d:%02d:%02d",hour,min,sec)
 }
