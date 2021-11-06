@@ -1,6 +1,7 @@
 package com.example.tasktimer_error404
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
@@ -147,15 +148,14 @@ class GoalDetailsPage : AppCompatActivity() {
         //todo make a prompt dialog: are you sure you are done?
         val goal = selectedGoal
         taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, goal.g_icon, true.toString(), goal.g_time)
-
+        val intent = Intent(this, CongratPage::class.java)
+        //todo pass goal
+        startActivity(intent)
+        //goal make to grey and line
     }
 }
 //todo complete goal + move to congrats
 //todo congrats
-
-
-
-
 
 
 //todo app name
@@ -165,6 +165,7 @@ class GoalDetailsPage : AppCompatActivity() {
     //make overall goal time
 //todo maybe change no task icon
 //todo alert dialog pretty ui
+//todo goal item ui + add goal
 /*
 
 Tapping another task while a timer is active, should pause the active timer and start the timer of the tapped task
