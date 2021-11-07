@@ -55,7 +55,6 @@ class TaskAdapter (val context: Context, val activity: GoalDetailsPage): Recycle
                 intent.putExtra("task_state", message.t_state)
                 intent.putExtra("task_time", message.t_time)
                 intent.putExtra("goal_id", message.goal_id)
-
                 context.startActivity(intent)
             }
             cbTaskItem.setOnClickListener {
@@ -66,7 +65,6 @@ class TaskAdapter (val context: Context, val activity: GoalDetailsPage): Recycle
                 }
             }
             cvTaskItem.setOnClickListener { selecteTaskID = message.t_id }
-
         }
     }
 

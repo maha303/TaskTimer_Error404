@@ -103,10 +103,10 @@ class GoalPage : AppCompatActivity() {
         var title = goal.g_title
         var descriptions = goal.g_description
         //setting text values
-    val et_g_t_title=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_title)
-    val et_g_t_descriptions=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_descriptions)
-    val editBtn_ok=messageBoxInstance.findViewById<Button>(R.id.editBtn_ok)
-    val editBtn_cancel=messageBoxInstance.findViewById<Button>(R.id.editBtn_cancel)
+        val et_g_t_title=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_title)
+        val et_g_t_descriptions=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_descriptions)
+        val editBtn_ok=messageBoxInstance.findViewById<Button>(R.id.editBtn_ok)
+        val editBtn_cancel=messageBoxInstance.findViewById<Button>(R.id.editBtn_cancel)
         et_g_t_title.setText(goal.g_title)
         et_g_t_descriptions.setText(goal.g_description)
         editBtn_ok.setOnClickListener {

@@ -56,7 +56,6 @@ class TimerPage : AppCompatActivity() {
 
         serviceIntent = Intent(applicationContext, TimerService::class.java)
         registerReceiver(updateTime, IntentFilter(TimerService.TIME_UPDATED))
-
     }
 
     private fun getTaskDetails() {

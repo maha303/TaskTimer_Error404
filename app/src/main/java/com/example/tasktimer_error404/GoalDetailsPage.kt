@@ -107,10 +107,6 @@ class GoalDetailsPage : AppCompatActivity() {
         binding.tvGoalDetailsDescription.text = selectedGoal.g_description
     }
 
-    private fun returnGoal(): Goal{
-        return selectedGoal
-    }
-
     fun addNewTask(view: View) {
         Log.d("TAG MAIN", "ADD TASK BUTTON PRESSED")
         val task = binding.etGoalDetailsAddTask.text.toString()
@@ -145,6 +141,7 @@ class GoalDetailsPage : AppCompatActivity() {
         taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, goal.g_state, sum)
         Log.d("Add_Over_All_Time", "Add_Over_All_Time: " + sum)
     }
+
     fun alertDialog(task: Task){
         //Inflate the dialog as custom view
         val messageBoxView = LayoutInflater.from(this).inflate(R.layout.edit_alartdialog, null)
@@ -172,6 +169,7 @@ class GoalDetailsPage : AppCompatActivity() {
             messageBoxInstance.dismiss()
         }
     }
+
     fun delDialog(task:Task){
         //Inflate the dialog as custom view
         val messageBoxView = LayoutInflater.from(this).inflate(R.layout.dialog, null)
@@ -193,6 +191,7 @@ class GoalDetailsPage : AppCompatActivity() {
             messageBoxInstance.dismiss()
         }
     }
+
     fun Dialog(){
         //Inflate the dialog as custom view
         val messageBoxView = LayoutInflater.from(this).inflate(R.layout.dialog, null)
