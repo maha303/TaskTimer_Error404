@@ -156,7 +156,7 @@ class GoalDetailsPage : AppCompatActivity() {
         val et_g_t_task=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_task)
         val edit_Btn_ok=messageBoxInstance.findViewById<Button>(R.id.edit_Btn_ok)
         val edit_Btn_cancel=messageBoxInstance.findViewById<Button>(R.id.edit_Btn_cancel)
-        et_g_t_task.hint= task.t_title
+        et_g_t_task.setText(task.t_title)
         edit_Btn_ok.setOnClickListener {
             if(et_g_t_task.text.isNotEmpty()){
                 pretask=et_g_t_task.text.toString()

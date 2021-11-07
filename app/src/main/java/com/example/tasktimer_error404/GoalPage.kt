@@ -107,8 +107,8 @@ class GoalPage : AppCompatActivity() {
     val et_g_t_descriptions=messageBoxInstance.findViewById<EditText>(R.id.et_g_t_descriptions)
     val editBtn_ok=messageBoxInstance.findViewById<Button>(R.id.editBtn_ok)
     val editBtn_cancel=messageBoxInstance.findViewById<Button>(R.id.editBtn_cancel)
-        et_g_t_title.hint= goal.g_title
-        et_g_t_descriptions.hint= goal.g_description
+        et_g_t_title.setText(goal.g_title)
+        et_g_t_descriptions.setText(goal.g_description)
         editBtn_ok.setOnClickListener {
             if(et_g_t_title.text.isNotEmpty()){
                 title=et_g_t_title.text.toString()
@@ -134,8 +134,8 @@ class GoalPage : AppCompatActivity() {
         val  messageBoxInstance = messageBoxBuilder.show()
 
         //setting text values
-        val ok_Btn=messageBoxInstance.findViewById<Button>(R.id.ok_Btn)
-        val cancel_Btn=messageBoxInstance.findViewById<Button>(R.id.cancel_Btn)
+        val ok_Btn = messageBoxInstance.findViewById<Button>(R.id.ok_Btn)
+        val cancel_Btn = messageBoxInstance.findViewById<Button>(R.id.cancel_Btn)
 
         ok_Btn.setOnClickListener {
             goalViewModel.deleteGoal(goal.g_id)
