@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -76,7 +77,7 @@ class GoalPage : AppCompatActivity() {
         }
         override fun onChildDraw (c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean){
             RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                .addSwipeRightBackgroundColor(Color.GREEN).addSwipeLeftBackgroundColor(Color.RED) //todo change colors to prettier colors
+                .addSwipeRightBackgroundColor(Color.GREEN).addSwipeLeftBackgroundColor(Color.RED)
                 .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24).addSwipeLeftActionIcon(R.drawable.delete_icon)
                 .setActionIconTint(Color.WHITE)
                 .addSwipeLeftLabel("DELETE").setSwipeLeftLabelColor(Color.WHITE).setSwipeLeftLabelTextSize(
@@ -91,7 +92,17 @@ class GoalPage : AppCompatActivity() {
     private lateinit var goalViewModel: MainViewModel
     private fun initializeViewModel(){
         goalViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        goalViewModel.getGoals().observe(this, { goals -> adapterGoal.updateRecycleView(goals) })
+        goalViewModel.getGoals().observe(this, { goals ->
+            if(goals.isEmpty()) {
+                Log.d("TAG GP", "goal list is empty")
+                binding.llNoGoal.isVisible = true
+            }
+            else{
+                Log.d("TAG GP", "goal list is: $goals")
+                binding.llNoGoal.isVisible = false
+            }
+            adapterGoal.updateRecycleView(goals)
+        })
     }
 
     fun alertDialog(goal: Goal){

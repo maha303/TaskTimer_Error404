@@ -26,11 +26,11 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@null"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home"
+        app:srcCompat="@drawable/ic_baseline_arrow_circle_left_24"
         app:tint="#DA997F" />
 
     <TextView

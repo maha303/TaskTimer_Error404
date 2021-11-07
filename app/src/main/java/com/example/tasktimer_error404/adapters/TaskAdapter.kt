@@ -15,6 +15,7 @@ import com.example.tasktimer_error404.database.Goal
 import com.example.tasktimer_error404.database.Task
 import com.example.tasktimer_error404.databinding.TaskItemBinding
 import com.example.tasktimer_error404.timer.TimerPage
+import kotlin.math.roundToInt
 
 class TaskAdapter (val context: Context, val activity: GoalDetailsPage): RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     var messages = emptyList<Task>()
@@ -36,6 +37,7 @@ class TaskAdapter (val context: Context, val activity: GoalDetailsPage): Recycle
         val message = messages[position]
         holder.binding.apply {
             tvTaskItemTitle.text = message.t_title
+            tvtaskTime.text = getTimeStringFromDouble(message.t_time)
             if(message.t_state == true.toString()) {
                 cbTaskItem.isChecked = true
                 tvTaskItemTitle.paintFlags = tvTaskItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -84,4 +86,13 @@ class TaskAdapter (val context: Context, val activity: GoalDetailsPage): Recycle
         var message = messages[position]
         return message
     }
+
+    private fun getTimeStringFromDouble(time: Double): String {
+        val resultInt = time.roundToInt()
+        val hours = resultInt % 86400 / 3600
+        val minutes = resultInt % 86400 % 3600 / 60
+        val seconds = resultInt % 86400 % 3600 % 60
+        return makeTimeString(hours,minutes,seconds)
+    }
+    private fun makeTimeString(hour: Int, min: Int, sec: Int): String = String.format("%02d:%02d:%02d",hour,min,sec)
 }

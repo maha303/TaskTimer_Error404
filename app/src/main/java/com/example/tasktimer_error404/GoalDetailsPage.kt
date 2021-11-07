@@ -45,11 +45,11 @@ class GoalDetailsPage : AppCompatActivity() {
         taskViewModel.getTasks(selectedGoal.g_id).observe(this, { tasks ->
             if(tasks.isEmpty()) {
                 Log.d("TAG GDP", "task list is empty")
-                binding.llnoTask.isVisible = true
+                binding.llNoTask.isVisible = true
             }
             else{
                 Log.d("TAG GDP", "task list is: $tasks")
-                binding.llnoTask.isVisible = false
+                binding.llNoTask.isVisible = false
             }
             current_task = tasks
             setOverAllTime(tasks)
@@ -76,7 +76,7 @@ class GoalDetailsPage : AppCompatActivity() {
         }
         override fun onChildDraw (c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean){
             RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                .addSwipeRightBackgroundColor(Color.GREEN).addSwipeLeftBackgroundColor(Color.RED) //todo change colors to prettier colors
+                .addSwipeRightBackgroundColor(Color.GREEN).addSwipeLeftBackgroundColor(Color.RED)
                 .addSwipeRightActionIcon(R.drawable.ic_baseline_edit_24).addSwipeLeftActionIcon(R.drawable.delete_icon)
                 .setActionIconTint(Color.WHITE)
                 .addSwipeLeftLabel("DELETE").setSwipeLeftLabelColor(Color.WHITE).setSwipeLeftLabelTextSize(TypedValue.COMPLEX_UNIT_DIP, 18f)
@@ -217,11 +217,3 @@ class GoalDetailsPage : AppCompatActivity() {
         }
     }
 }
-
-//todo app name
-
-//Lubabah
-//todo instructions
-
-//Lina
-//todo display task time for each task - similar to goal

@@ -50,8 +50,7 @@ class TimerPage : AppCompatActivity() {
         }
         binding.timerHome.setOnClickListener {
             stopTimer()
-            val intent = Intent(this, GoalPage::class.java)
-            startActivity(intent)
+            finish()
         }
 
         serviceIntent = Intent(applicationContext, TimerService::class.java)
