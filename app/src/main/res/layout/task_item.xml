@@ -38,47 +38,39 @@
                 android:scaleX="1.30"
                 android:scaleY="1.30"
                 style="@style/CustomCheckbox02"
-                android:layout_margin="8dp"
+                android:layout_margin="16dp" />
 
-                />
-
-            <TextView
-                android:id="@+id/tvTaskItemTitle"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvTaskItemTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="task"
+                    android:textColor="#373737"
+                    android:textSize="18dp" />
 
-                android:text="task"
-                android:textColor="#373737"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/tvTaskTimeTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_weight="0"
-                android:text="Total time: "
-                android:textColor="#DA997F"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvtaskTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="00:00:00"
-                android:textColor="#373737"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvtaskTime"
+                    android:layout_width="72dp"
+                    android:layout_height="wrap_content"
+                    android:text="00:00:00"
+                    android:textColor="#373737"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/ivTaskItem"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_margin="8dp"
+                android:layout_margin="16dp"
                 app:srcCompat="@drawable/ic_baseline_timer_24" />
         </LinearLayout>
 
