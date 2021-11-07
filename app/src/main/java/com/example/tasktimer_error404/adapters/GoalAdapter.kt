@@ -31,7 +31,7 @@ class GoalAdapter(val activity: GoalPage):
         val goal = goals[position]
         holder.binding.apply {
             tvGoalItemTitle.text = goal.g_title //name of the entity column
-            tvtotalTime.text = getTimeStringFromDouble(goal.g_time) //todo convert to string
+            tvtotalTime.text = getTimeStringFromDouble(goal.g_time)
 
             if(goal.g_state == true.toString()) { //complete
                 tvGoalItemTitle.paintFlags = tvGoalItemTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG

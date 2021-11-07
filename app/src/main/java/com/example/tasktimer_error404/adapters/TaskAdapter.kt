@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimer_error404.GoalDetailsPage
+import com.example.tasktimer_error404.GoalPage
 import com.example.tasktimer_error404.MainActivity
 import com.example.tasktimer_error404.database.Goal
 import com.example.tasktimer_error404.database.Task

@@ -51,6 +51,7 @@ class GoalDetailsPage : AppCompatActivity() {
                 Log.d("TAG GDP", "task list is: $tasks")
                 binding.llnoTask.isVisible = false
             }
+            current_task = tasks
             setOverAllTime(tasks)
             adapterTask.update(tasks)
         })
@@ -106,6 +107,10 @@ class GoalDetailsPage : AppCompatActivity() {
         binding.tvGoalDetailsDescription.text = selectedGoal.g_description
     }
 
+    private fun returnGoal(): Goal{
+        return selectedGoal
+    }
+
     fun addNewTask(view: View) {
         Log.d("TAG MAIN", "ADD TASK BUTTON PRESSED")
         val task = binding.etGoalDetailsAddTask.text.toString()
@@ -118,6 +123,7 @@ class GoalDetailsPage : AppCompatActivity() {
         taskViewModel.editTask(task.t_id, task.t_title, state.toString(), task.t_time, task.goal_id)
     }
 
+    lateinit var current_task: List<Task>
     fun backButton(view: View) {
         val intent = Intent(this, GoalPage::class.java)
         startActivity(intent)
@@ -137,6 +143,7 @@ class GoalDetailsPage : AppCompatActivity() {
         }
         val goal = selectedGoal
         taskViewModel.editGoal(goal.g_id, goal.g_title, goal.g_description, goal.g_state, sum)
+        Log.d("Add_Over_All_Time", "Add_Over_All_Time: " + sum)
     }
     fun alertDialog(task: Task){
         //Inflate the dialog as custom view
